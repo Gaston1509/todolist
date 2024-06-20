@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mi Primer Mesh</title>
+  </head>
+  <body>
+    <h1 id="titulo">Hola Javascript</h1>
+    <p id="edad">Tu edad es:</p>
+    <p id="ciudad">Tu ciudad es:</p>
+    <script>
+      //   alert("Hola Gastón");
+
+      let h1 = document.getElementById("titulo");
+
+      let contenido = h1.innerHTML;
+
+      let nombre = "Gastón Meza";
+
+      h1.innerHTML = "Hola " + nombre;
+
+      let edad = document.getElementById("edad");
+      let ciudad = document.getElementById("ciudad");
+
+      edad.innerHTML += " " + 45;
+      ciudad.innerHTML += " Florencio Varela";
+    </script>
+  </body>
+</html>

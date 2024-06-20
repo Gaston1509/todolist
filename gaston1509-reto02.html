@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>gaston1509-Reto02</title>
+  </head>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+    body {
+      background: #7cb342;
+      font-family: Arial, Helvetica, sans-serif;
+      color: rgb(42, 32, 32);
+    }
+    #body {
+      margin: 1rem;
+      padding: 1rem;
+    }
+    .container {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      text-align: center;
+      padding-bottom: 1rem;
+      margin-bottom: 1rem;
+    }
+    button {
+      cursor: pointer;
+      margin-top: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .nombretitulo {
+      color: #c3ee41;
+    }
+    .mostrarValor {
+      color: #d8271b;
+    }
+    .mostrarValor2 {
+      color: #60de1c;
+    }
+    .darkMode {
+      background-color: #2c2727;
+      color: #dbd0d0;
+    }
+  </style>
+
+  <body id="">
+    <main id="body">
+      <!-- App -->
+      <div class="container">
+        <h1 class="h1">Calculadora de tarascas</h1>
+        <button id="btncambio">Dark-Mode</button>
+      </div>
+
+      <!-- Saludo -->
+
+      <!-- Campo para ingresar datos -->
+      <label for="nombre">
+        <h2>Cual es tu nombre?</h2>
+      </label>
+      <input id="nombre" type="text" placeholder="Ingresa tu nombre" />
+
+      <!-- Datos ingresados -->
+      <h1 id="saludo"></h1>
+
+      <!-- Boton de ingreso del usuario -->
+      <button id="btn">Entrar</button>
+      <hr />
+
+      <!-- Calculadora de divisas -->
+
+      <!-- compra  uSs -->
+      <label for="dolar">
+        <h2 id="mostrarVenta">Venta dolar Blue</h2>
+      </label>
+      <input type="text" id="dolar" placeholder="Cantidad de dolares" />
+      <button id="btnDolar">Calcular</button>
+      <p>Valor en pesos argentinos: <strong id="parrafoDolar"></strong></p>
+      <img id="img" src="peso.png" alt="peso" width="240px" />
+
+      <!-- venta de dolar -->
+      <label for="dolar2">
+        <h2 id="mostrarCompra">Compra dolar blue</h2>
+      </label>
+      <input type="text" id="dolar2" placeholder="Cantidad de pesos" />
+      <button id="btnDolar2">Calcular</button>
+      <p>Valor en pesos argentinos: <strong id="parrafoDolar2"></strong></p>
+      <img id="img2" src="peso2.png" alt="peso" width="240px" />
+      <hr />
+
+      <!-- cambio pesos a doralares -->
+      <label for="dolar3">
+        <h2 id="pesoDolar">Cambio pesos a dolares</h2>
+      </label>
+      <input type="text" id="dolar3" placeholder="Cantidad de dolares" />
+      <button id="btnDolar3">Calcular</button>
+      <p>Valor dolar venta: <strong id="parrafoDolar3"></strong></p>
+      <img id="img3" src="peso2000.png" alt="peso" width="240px" />
+      <hr />
+
+      <!-- Moneda Euro -->
+      <label for="euro">
+        <h2 id="valorEuro">Cambio Euros</h2>
+      </label>
+      <input type="text" name="" id="euro" placeholder="Cantidad de Euros" />
+      <button id="btnEuro">Calcular</button>
+      <p>Valor en pesos argentinos: <strong id="parrafoEuro"></strong></p>
+      <img id="img4" src="euros.png" alt="peso" width="240px" />
+      <hr />
+
+      <!-- Moneda Uruguayo -->
+      <label for="uru">
+        <h2 id="ValorUru">Cambio Uruguayos</h2>
+      </label>
+      <input type="text" name="" id="uru" placeholder="Cantidad de Uruguayos" />
+      <button id="btnUru">Calcular</button>
+      <p>Valor en pesos argentinos: <strong id="parrafoUru"></strong></p>
+      <img id="img5" src="urupesos.png" alt="peso" width="240px" />
+      <hr />
+
+      <!-- Reinicar -->
+
+      <button id="btnReinicar">Reinicar</button>
+
+      <script>
+        // ----------------Valor monedas----------------------
+
+        // Dolar compra
+        let valorDolar = 1035;
+
+        // Dolar Venta
+        let valorDolarVenta = 1045; // se reutiliza el valor para el cambio de pesos a dolares
+
+        // Euro compra
+        let valorEuro = 936.3;
+
+        // Euro com
+        let valorUru = 23;
+
+        //------------------------------------------------------
+
+        // -----------Instanciar valores de las monedas por tipo
+
+        //----------- Dolar Compra
+        let h2Venta = document.getElementById("mostrarVenta");
+        h2Venta.innerHTML +=
+          " $ " + `<span class="mostrarValor">${valorDolar}</span>`;
+
+        // -----------Dolar Venta
+        let h2Compra = document.getElementById("mostrarCompra");
+        h2Compra.innerHTML +=
+          " $ " +
+          `<span id="ventadolar" class="mostrarValor">${valorDolarVenta}</span>`;
+
+        //----------- Cambio de pesos a dolares
+        let h2PesoDolar = document.getElementById("pesoDolar");
+        h2PesoDolar.innerHTML +=
+          " $ " + `<span class="mostrarValor">${valorDolarVenta}</span>`;
+
+        //----------- Cambio de pesos a Euros
+        let h2Euro = document.getElementById("valorEuro");
+        h2Euro.innerHTML +=
+          " € " + `<span class="mostrarValor">${valorEuro}</span>`;
+
+        //----------- Cambio de pesos a Uruguayos
+        let h2Uru = document.getElementById("ValorUru");
+        h2Uru.innerHTML +=
+          " $ " + `<span class="mostrarValor">${valorUru}</span>`;
+
+        let img = document.getElementById("img");
+        img.innerHTML = ``;
+
+        //------ Función para saludar al usuario
+
+        const saludar = () => {
+          let saludo = document.getElementById("saludo");
+          let nombre = document.getElementById("nombre").value;
+          if (nombre === "") {
+            alert("Ingrese su nombre");
+          } else {
+            saludo.innerHTML = `Bienvenido <span class="nombretitulo">${nombre}</span> !! empecemos a cambiar billetes`;
+          }
+        };
+
+        //------- Función camdio dolares compra
+
+        const cambioDolar = () => {
+          let dolar = document.getElementById("dolar").value; //---> Valor del input
+          let parrafoDolar = document.getElementById("parrafoDolar");
+          let resultadoDolar = dolar * valorDolar;
+          if (dolar === "") {
+            alert("Ingreso monto a cambiar");
+          } else {
+            parrafoDolar.innerHTML += " $ " + resultadoDolar; //---> se agrega el valor del value con innerHTML;
+          }
+        };
+        // Cambio img peso compra dolar
+
+        let bandera = document.getElementById("dolar");
+        bandera.addEventListener("change", () => {
+          console.log(dolar.value);
+          if (dolar === "") {
+            img;
+          } else {
+            img.setAttribute("src", "dolar_eeuu.png");
+          }
+        });
+
+        //--------Función camdio dolares venta
+
+        const cambioDolar2 = () => {
+          let dolar2 = document.getElementById("dolar2").value; //---> Valor del input
+          let parrafoDolar2 = document.getElementById("parrafoDolar2");
+          let resultadoDolar2 = dolar2 * valorDolarVenta;
+          if (dolar2 === "") {
+            alert("Ingreso monto a cambiar");
+          } else {
+            parrafoDolar2.innerHTML += " $ " + resultadoDolar2; //---> se agrega el valor del value con innerHTML
+          }
+        };
+
+        // Camvio img monerda EEUU compra peso
+
+        let bandera3 = document.getElementById("dolar3");
+        bandera3.addEventListener("change", () => {
+          console.log(dolar.value);
+          if (dolar === "") {
+            img3;
+          } else {
+            img3.setAttribute("src", "dolar2.png");
+          }
+        });
+
+        //-------- Funcón cambio pesos a dolares
+
+        const cambioDolar3 = () => {
+          let dolar3 = document.getElementById("dolar3").value; //---> Valor del input
+          let parrafoDolar3 = document.getElementById("parrafoDolar3");
+          let resultadoDolar3 = dolar3 / valorDolarVenta;
+          if (dolar3 === "") {
+            alert("Ingreso monto a cambiar");
+          } else {
+            parrafoDolar3.innerHTML += " $USD " + resultadoDolar3; //---> se agrega el valor del value con innerHTML
+          }
+        };
+
+        // Cambio img compra dolar
+
+        let bandera2 = document.getElementById("dolar2");
+        bandera2.addEventListener("change", () => {
+          console.log(dolar2.value);
+          if (dolar2 === "") {
+            img2;
+          } else {
+            img2.setAttribute("src", "dolar3.png");
+          }
+        });
+
+        //--------  Función camdio Euros
+
+        const cambioEuro = () => {
+          let euro = document.getElementById("euro").value; //----> Valor del input
+          let parrafoEuro = document.getElementById("parrafoEuro");
+          let resultadoEuro = euro * valorEuro;
+          if (euro === "") {
+            alert("Ingreso monto a cambiar");
+          } else {
+            parrafoEuro.innerHTML += " $ " + resultadoEuro.toFixed(2); //---> se agrega el valor del value con innerHTML
+          }
+        };
+
+        // Cambio img Argentina compra Euros
+
+        let bandera4 = document.getElementById("euro");
+        bandera4.addEventListener("change", () => {
+          console.log(euro.value);
+          if (dolar2 === "") {
+            img2;
+          } else {
+            img4.setAttribute("src", "pesos4.png");
+          }
+        });
+
+        const cambioUru = () => {
+          let uru = document.getElementById("uru").value; //---> Valor del input
+          let parrafoUru = document.getElementById("parrafoUru");
+          let resultadoUru = uru * valorUru;
+          if (uru === "") {
+            alert("Ingrese cantidad a cambiar");
+          } else {
+            parrafoUru.innerHTML += " $ " + resultadoUru; //---> se agrega el valor del value con innerHTML
+          }
+        };
+
+        // Cambio img Argentina compra Uruguayos
+
+        let bandera5 = document.getElementById("uru");
+        bandera5.addEventListener("change", () => {
+          console.log(uru.value);
+          if (uru === "") {
+            img5;
+          } else {
+            img5.setAttribute("src", "peso2000.png");
+          }
+        });
+
+        //--------- Funcion Modo noche
+
+        let body = document.body;
+        let botonDark = document.getElementById("btncambio");
+        let div = document.querySelector(".container");
+        let main = document.getElementById("body");
+        let spanValor = document.querySelector(".mostrarValor");
+        let spanValor3 = document.getElementById("ventadolar");
+
+        //----------Boton modo noche
+        // agregar id
+
+        botonDark.addEventListener("click", () => {
+          body.classList.toggle("darkMode");
+          main.classList.toggle("darkMode");
+          div.classList.toggle("darkMode");
+          console.log("click");
+          if (botonDark.innerText === "Dark-Mode") {
+            botonDark.innerText = "Light-Mode";
+            spanValor.classList.add("mostrarValor2");
+            spanValor3.classList.add("mostrarValor2");
+          } else {
+            botonDark.innerText = "Dark-Mode";
+            spanValor.classList.remove("mostrarValor2");
+            spanValor3.classList.remove("mostrarValor2");
+          }
+        });
+
+        //----------Función Reiniciar
+
+        const reiniciarTodo = () => {
+          document.getElementById("saludo").innerHTML = "";
+          document.getElementById("nombre").value = "";
+          document.getElementById("parrafoDolar").innerHTML = "";
+          document.getElementById("dolar").value = "";
+          document.getElementById("parrafoDolar2").innerHTML = "";
+          document.getElementById("dolar2").value = "";
+          document.getElementById("parrafoDolar3").innerHTML = "";
+          document.getElementById("dolar3").value = "";
+          document.getElementById("parrafoEuro").innerHTML = "";
+          document.getElementById("euro").value = "";
+          document.getElementById("parrafoUru").innerHTML = "";
+          document.getElementById("uru").value = "";
+        };
+
+        //-----------Instanciado de los botones
+        let botonSaludar = document.getElementById("btn");
+        let botonDolar = document.getElementById("btnDolar");
+        let botonDolar2 = document.getElementById("btnDolar2");
+        let botonDolar3 = document.getElementById("btnDolar3");
+        let botonEuro = document.getElementById("btnEuro");
+        let btnReinicar = document.getElementById("btnReinicar");
+        let btnUru = document.getElementById("btnUru");
+
+        //-----------Llamado a la función de los botones
+        botonSaludar.addEventListener("click", saludar);
+        botonDolar.addEventListener("click", cambioDolar);
+        botonDolar2.addEventListener("click", cambioDolar2);
+        botonDolar3.addEventListener("click", cambioDolar3);
+        botonEuro.addEventListener("click", cambioEuro);
+        btnUru.addEventListener("click", cambioUru);
+        btnReinicar.addEventListener("click", reiniciarTodo);
+      </script>
+    </main>
+  </body>
+</html>

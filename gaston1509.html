@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Primer Reto</title>
+  </head>
+  <h1 id="titulo"></h1>
+
+  <p>Mi nombre es: <strong id="nombre"></strong></p>
+
+  <p>Tengo <strong id="edad"></strong></p>
+
+  <p>Vivo en la ciudad de <strong id="ciudad"></strong></p>
+
+  <p><strong id="estudios"></strong></p>
+
+  <h3><strong id="biografia"></strong></h3>
+
+  <p><strong id="ig"></strong></p>
+
+  <body>
+    <script>
+      let titulo = document.getElementById("titulo");
+      let nombre = document.getElementById("nombre");
+      let edad = document.getElementById("edad");
+      let ciudad = document.getElementById("ciudad");
+      let estudios = document.getElementById("estudios");
+      let biografia = document.getElementById("biografia");
+      let ig = document.getElementById("ig");
+
+      titulo.innerHTML = "Primer Reto";
+      nombre.innerHTML = "Gaston Meza";
+      edad.innerHTML = " " + "45" + " años";
+      ciudad.innerHTML = " Florecion Varela";
+      estudios.innerHTML = "";
+      biografia.innerHTML = "Hola";
+      ig.innerHTML =
+        "<a href='https://www.instagram.com/gaston1509?utm_source=qr&igsh=Y2EzcWZvcmdzcmM2'>Instagram</a>";
+    </script>
+  </body>
+</html>

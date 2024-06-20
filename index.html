@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Modal Example</title>
+  </head>
+  <style>
+    /* Modal styles */
+    .modal {
+      display: none; /* Hidden by default */
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      text-align: center;
+      padding: 10px;
+    }
+
+    .modal-content {
+      background-color: #333;
+      margin: auto;
+      padding: 20px;
+      border: 1px solid #888;
+      width: 80%;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+  </style>
+  <body>
+    <div id="content">
+      <p id="element-to-delete">Este es un elemento que puede ser borrado.</p>
+      <button onclick="deleteElement()">Borrar Elemento</button>
+    </div>
+
+    <!-- Modal Structure -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <p>El elemento ha sido borrado.</p>
+        <button onclick="closeModal()">Cerrar</button>
+      </div>
+    </div>
+
+    <script>
+      function deleteElement() {
+        // Delete the element
+        var element = document.getElementById("element-to-delete");
+        if (element) {
+          element.remove();
+        }
+
+        // Show the modal
+        var modal = document.getElementById("modal");
+        modal.style.display = "block";
+      }
+
+      function closeModal() {
+        // Hide the modal
+        var modal = document.getElementById("modal");
+        modal.style.display = "none";
+      }
+    </script>
+  </body>
+</html>

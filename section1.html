@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    .page1 {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin-top: 5rem;
+    }
+    .contenedor {
+      border: solid #b19c9c 1px;
+      border-radius: 20px;
+      padding: 1rem;
+      box-shadow: 5px 5px 10px 0px rgba(122, 105, 105, 0.45);
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    #llenar {
+      display: flex;
+      justify-content: center;
+    }
+
+    li {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1px;
+      border: solid grey 1px;
+      border-radius: 10px;
+      padding: 0, 0.5 rem, 0 0.5rem;
+      width: 10rem;
+      list-style: lower-roman;
+    }
+    .btnBorrar {
+      background-color: antiquewhite;
+      margin-left: 0;
+      width: 26px;
+    }
+    p {
+      width: 100%;
+      background-color: antiquewhite;
+      padding: 0.1rem;
+      text-transform: capitalize;
+      color: rgb(67, 63, 63);
+    }
+  </style>
+  <body>
+    <section id="sectOne" class="page page1">
+      <div class="contenedor">
+        <div>
+          <label for="primerSeccion"><h2>Lista del super</h2></label>
+          <input
+            type="text"
+            name="primerSeccion"
+            id="primerSeccion"
+            placeholder="Agregar viveres"
+          />
+          <button id="btnAgregar1">+</button>
+          <div class="container">
+            <ul id="ulSectOne"></ul>
+          </div>
+        </div>
+        <div id="llenar">
+          <h4>Sin productos</h4>
+        </div>
+      </div>
+    </section>
+
+    <script>
+      let inputprimerSeccion = document.getElementById("primerSeccion"); // input
+      let btnAgregarSuper = document.getElementById("btnAgregar1"); // boton agregar tarea
+      let ul = document.getElementById("ulSectOne"); // ul
+      let llenar = document.getElementById("llenar"); // parrafo
+
+      //   funcion boton
+      btnAgregarSuper.addEventListener("click", (e) => {
+        const text = inputprimerSeccion.value;
+        if (text !== "") {
+          const li = document.createElement("li");
+          const p = document.createElement("p");
+          p.textContent = text;
+          li.appendChild(p);
+          li.appendChild(agregarBtnDelete());
+          ul.appendChild(li);
+          inputprimerSeccion.value = "";
+          llenar.style.display = "none";
+        } else {
+          alert("Agregue una tarea");
+        }
+      });
+
+      function agregarBtnDelete() {
+        let btnDelete = document.createElement("button");
+        btnDelete.textContent = "X";
+        btnDelete.className = "btnBorrar";
+
+        btnDelete.addEventListener("click", (e) => {
+          let item = e.target.parentElement;
+          ul.removeChild(item);
+
+          const items = document.querySelectorAll("li");
+          if (items.length === 0) {
+            llenar.style.display = "block";
+          }
+        });
+        return btnDelete;
+      }
+    </script>
+  </body>
+</html>

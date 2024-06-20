@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>formularios</title>
+  </head>
+  <body>
+    <form action="">
+      <!-- text -->
+      <label for="nombre">Ingresa tu nombre</label>
+      <input
+        type="text"
+        id="nombre"
+        placeholder="Ingresa tu nombre completo"
+      /><br /><br />
+      <label for="email"> Ingresa tu email</label>
+      <input
+        id="email"
+        type="email"
+        placeholder="gaston@pepeloco.com"
+      /><br /><br />
+      <label for="pass">Ingresa tu pass</label>
+      <input id="pass" type="password" placeholder="password" />
+
+      <!-- radio -->
+      Pato<input type="radio" name="genero" /> Pata<input
+        type="radio"
+        name="genero"
+      />
+      Loro<input type="radio" name="genero" />
+
+      <!-- checkbox -->
+      <p>Seleccione segun corresponda</p>
+      <label for="dulce">Dulce</label>
+      <input type="checkbox" name="dulce" id="dulce" />
+      <label for="salado">Salado</label>
+      <input type="checkbox" name="salado" id="salado" />
+      <label for="carne">Carne</label>
+      <input type="checkbox" name="carne" id="carne" />
+      <label for="verdura">Verdura</label>
+      <input type="checkbox" name="verdura" id="verdura" />
+      <br /><br />
+      Nacionalidad
+      <select name="Nacionalidad" id="Nacionalidad">
+        <option value="seleccion">Seleccione</option>
+        <option value="argentino">Argentino</option>
+        <option value="uruguay">Uruguayo</option>
+      </select>
+      <!-- submit -->
+      <br /><br />
+      <input type="submit" value="ENVIAR DATOS" />
+    </form>
+  </body>
+</html>

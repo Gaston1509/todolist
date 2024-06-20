@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculadora</title>
+  </head>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background-color: #329e3b;
+      background-image: url("background.png");
+      /* height: 80vh; */
+    }
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0rem 1rem 0 1rem;
+      background-color: rgb(125, 173, 158);
+    }
+    .container {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      align-items: center;
+      margin: 0 auto;
+      background-color: rgb(214 203 203 / 0.65);
+      width: 40%;
+      height: 90vh;
+    }
+    .nombreTitulo {
+      color: #011a03;
+    }
+    h2 {
+      margin-top: 0px;
+      margin-bottom: 0px;
+    }
+    .img {
+      width: 4rem;
+      padding: 0.3rem;
+      border-radius: 30px;
+    }
+    .imgMoneda {
+      width: 80px;
+      height: 80px;
+      border-radius: 10px;
+    }
+  </style>
+  <body>
+    <nav class="nav">
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/5/5e/Assorted_United_States_coins.jpg"
+        alt="Monedas"
+        class="img"
+      />
+      <button id="btncambio">Dark-Mode</button>
+    </nav>
+    <div class="container">
+      <h2>Calculadora</h2>
+      <div>
+        <label for="nombre"> <h3>Ingresa tu nombre</h3></label>
+        <input type="text" id="nombre" placeholder="Ingresa tu nombre" />
+        <br /><br />
+        <button id="ingresar">Ingresar</button>
+        <p id="parrafoSaludo"></p>
+        <br />
+      </div>
+      <label for="moneda">Selecciona la moneda a cambiar: </label>
+      <select id="moneda" onchange="cambiarImagen()">
+        <option value="seleccionar">Seleccionar</option>
+        <option value="dolar">Compra Dólar</option>
+        <option value="dolarVenta">Venta Dólar</option>
+        <option value="euro">Euro</option>
+      </select>
+      <br />
+      <img
+        id="imagenMoneda"
+        src="peso2000.png"
+        alt="Moneda"
+        style="width: 200px"
+        class="imgMoneda"
+      />
+      <br />
+
+      <label for="peso">Ingresa cantidad en pesos:</label>
+      <input type="number" id="peso" placeholder="cantidad a cambiar" /><br />
+      <button onclick="calcular()">Calcular</button><br />
+      <p id="resultado"></p>
+    </div>
+
+    <script>
+      let valorCompraD = 1045;
+      let valorVentaD = 1035;
+      let valorCompraE = 936;
+      let botonSaludo = document.getElementById("ingresar");
+
+      // FUNCION SALUDAR----
+
+      function saludar() {
+        let parrafoSaludo = document.getElementById("parrafoSaludo");
+        let nombre = document.getElementById("nombre").value;
+        if (nombre === "" || !isNaN(nombre)) {
+          alert("ingrese un nombre");
+        } else {
+          parrafoSaludo.innerHTML = `Bienvenido <span class="nombreTitulo">${nombre}</span> !! empecemos a cambiar billetes`;
+        }
+      }
+
+      function cambiarImagen() {
+        let seleccionar = document.getElementById("seleccionar");
+        let monedaSeleccionada = document.getElementById("moneda").value;
+        let imagenMoneda = document.getElementById("imagenMoneda");
+
+        if (monedaSeleccionada === "seleccionar") {
+          imagenMoneda.src = "peso2000.png";
+        } else if (monedaSeleccionada === "dolar") {
+          imagenMoneda.src = "dolar2.png"; // Ruta de la imagen del dólar
+        } else if (monedaSeleccionada === "dolarVenta") {
+          imagenMoneda.src = "dolar_eeuu.png";
+        } else if (monedaSeleccionada === "euro") {
+          imagenMoneda.src = "euros.png"; // Ruta de la imagen del euro
+        }
+      }
+
+      function calcular() {
+        let moneda = document.getElementById("moneda").value;
+        let pesoInput = parseFloat(document.getElementById("peso").value);
+        let resultado = document.getElementById("resultado");
+
+        if (pesoInput === "") {
+          alert("Ingrese un valor en el campo de peso");
+          return;
+        }
+
+        let peso = parseFloat(pesoInput);
+
+        if (isNaN(peso)) {
+          alert("Ingrese un monto a cambiar");
+          return;
+        }
+
+        if (moneda === "dolar") {
+          let resultadoCompra = peso * valorCompraD.toFixed(2);
+          resultado.innerHTML = `El resultado es: $ ${resultadoCompra}`;
+
+          // resultado.textContent =
+          //   "El resultado es: $" + peso * valorCompraD.toFixed(2);
+        } else if (moneda === "dolarVenta") {
+          resultado.textContent =
+            "El resultado es: $ " + peso * valorVentaD.toFixed(2);
+        } else if (moneda === "euro") {
+          resultado.textContent =
+            "El resultado es: € " + peso * valorCompraE.toFixed(2);
+        } else {
+          alert("Por favor selecciona una moneda válida.");
+        }
+      }
+
+      botonSaludo.addEventListener("click", saludar);
+    </script>
+  </body>
+</html>
